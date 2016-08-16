@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
 import request from 'superagent';
-import {FormGroup, FormControl, ControlLabel, Button} from 'react-bootstrap';
+import {
+  FormGroup, FormControl, ControlLabel, Button,
+  Grid, Row, Col
+} from 'react-bootstrap';
 
 export default class Article extends Component {
   constructor(props) {
@@ -12,21 +15,33 @@ export default class Article extends Component {
   }
 
   render() {
-    return <form onSubmit={this._onSubmit.bind(this)}>
-      <FormGroup>
-        <FormControl type="text" placeholder="title"
-                     value={this.state.title}
-                     onChange={this._onTitleChange.bind(this)}/>
-      </FormGroup>
-      <FormGroup>
-        <FormControl componentClass="textarea" placeholder="content"
-                     value={this.state.content}
-                     onChange={this._onContentChange.bind(this)}/>
-      </FormGroup>
-      <FormGroup>
-        <Button type="submit" onClick={this._onSubmit.bind(this)}>提交</Button>
-      </FormGroup>
-    </form>
+    return <Grid>
+      <Row>
+        <Col xs={12}>
+          <h1>New Article</h1>
+        </Col>
+      </Row>
+      <Row>
+        <Col xs={12}>
+          <form onSubmit={this._onSubmit.bind(this)}>
+            <FormGroup>
+              <FormControl type="text" placeholder="title"
+                           value={this.state.title}
+                           onChange={this._onTitleChange.bind(this)}/>
+            </FormGroup>
+            <FormGroup>
+              <FormControl componentClass="textarea" placeholder="content"
+                           value={this.state.content}
+                           onChange={this._onContentChange.bind(this)}/>
+            </FormGroup>
+            <FormGroup>
+              <Button type="submit" onClick={this._onSubmit.bind(this)}>提交</Button>
+            </FormGroup>
+          </form>
+
+        </Col>
+      </Row>
+    </Grid>
   }
 
   _onTitleChange(event) {
